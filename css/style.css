@@ -11,6 +11,14 @@ body{
     background-color: #f5f8fa;
 }
 
+footer{
+    margin: 0;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(0,0,0,.05);
+    background-color: #fff;
+    text-align: center;
+}
+
 .navbar-laravel
 {
     box-shadow: 0 2px 4px rgba(0,0,0,.04);
