@@ -30,6 +30,32 @@ footer{
     font-family: Raleway, sans-serif;
 }
 
+body,
+html {
+    font-family: 'Open Sans', sans-serif;
+    scroll-behavior: smooth;
+}
+
+article h1 {
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+#site-name {
+    font-size: 30px;
+}
+
+#site-name,
+nav {
+    display: inline-block;
+}
+
+.wrapper {
+    max-width: 1060px;
+    margin: 0 auto;
+}
+
 .my-form
 {
     padding-top: 1.5rem;
