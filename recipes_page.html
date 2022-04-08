@@ -5,6 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
   <!-- Fonts -->
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
@@ -12,12 +16,10 @@
   <!--    local css stylesheet-->
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
-        integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
-
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 
   <!-- local JS file -->
   <script src="scripts.js"></script>
@@ -57,58 +59,58 @@
 <main>
   <div class="container p-5">
 
-    <table class="table table-light table-hover" id="recipes">
+    <table class="table table-light table-hover table-bordered" id="recipes">
       <thead>
       <tr>
         <th scope="col">Recipe Name</th>
-        <th scope="col">Date posted</th>
+        <th scope="col">Date posted (yyyy/mm/dd)</th>
         <th scope="col">Author</th>
       </tr>
       </thead>
       <tbody>
       <tr>
         <td><a href="recipes/lasagna.html">Lasagna</a></td>
-        <td>4.4.2022</td>
+        <td>2022/04/04</td>
         <td>Daniel S</td>
       </tr>
       <tr>
         <td>Goulash</td>
-        <td>2.4.2022</td>
+        <td>2021/04/02</td>
         <td>Ali S</td>
       </tr>
       <tr>
         <td>Pizza</td>
-        <td>1.4.2022</td>
+        <td>2022/04/01</td>
         <td>Daniel S</td>
       </tr>
       <tr>
         <td>Cheesecake Flavoured Ice Cream</td>
-        <td>11.3.2022</td>
+        <td>2022/03/11</td>
         <td>Daniel S</td>
       </tbody>
     </table>
 
-<!--    Inputs to add new recipes, will be functional in HW2-->
+    <!--    Inputs to add new recipes, will be functional in HW2-->
 
-    <div class="add_user_form">
-      <div class="row p-5 align-items-end ">
-        <div class="col-3">
-          <label for="first" class="form-label">Recipe Name</label>
-          <input type="text" class="form-control" id="first_name">
-        </div>
+<!--    <div class="add_user_form">-->
+<!--      <div class="row p-5 align-items-end ">-->
 <!--        <div class="col-3">-->
-<!--          <label for="last" class="form-label">שם משפחה</label>-->
-<!--          <input type="text" class="form-control" id="last_name">-->
+<!--          <label for="first" class="form-label">Recipe Name</label>-->
+<!--          <input type="text" class="form-control" id="first_name">-->
 <!--        </div>-->
-<!--        <div class="col-3">-->
-<!--          <label for="last" class="form-label">טלפון</label>-->
-<!--          <input type="tel" class="form-control" id="phone">-->
+<!--                <div class="col-3">-->
+<!--                  <label for="last" class="form-label">שם משפחה</label>-->
+<!--                  <input type="text" class="form-control" id="last_name">-->
+<!--                </div>-->
+<!--                <div class="col-3">-->
+<!--                  <label for="last" class="form-label">טלפון</label>-->
+<!--                  <input type="tel" class="form-control" id="phone">-->
+<!--                </div>-->
+<!--        <div class="col-2">-->
+<!--          <button class="btn btn-block btn-primary" id="add_user">Add Recipe</button>-->
 <!--        </div>-->
-        <div class="col-2">
-          <button class="btn btn-block btn-primary" id="add_user">Add Recipe</button>
-        </div>
-      </div>
-    </div>
+<!--      </div>-->
+<!--    </div>-->
   </div>
 
 </main>
@@ -119,6 +121,7 @@
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
