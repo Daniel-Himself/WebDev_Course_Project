@@ -44,10 +44,10 @@
       <!--        <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="landing_page.html">Login</a>
+          <a class="nav-link" href="login_page.php">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="registration_page.html">Register</a>
+          <a class="nav-link" href="registration_page.php">Register</a>
         </li>
       </ul>
     </div>
@@ -71,7 +71,7 @@
       </thead>
       <tbody>
       <tr>
-        <td><a href="recipes/lasagna.html">Lasagna</a></td>
+        <td><a href="recipes/lasagna.php">Lasagna</a></td>
         <td>2022/04/04</td>
         <td>Daniel S</td>
       </tr>
