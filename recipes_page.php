@@ -1,6 +1,6 @@
 <?php require_once('header.php'); ?>
 
-<main>
+<main id="mainElemnt">
   <div class="container p-5">
 
     <table class="table table-light table-hover table-bordered" id="recipes">
