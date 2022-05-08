@@ -21,26 +21,28 @@ article h1 {
     font-weight: bold;
 }
 
-
 .wrapper {
     max-width: 1060px;
     margin: 0 auto;
 }
 
-/*coppied to inteleJ*/
-#mainElemnt {
-    margin-top: 100px;
-    padding-bottom: 20px;
+#content-wrap {
+    padding-bottom:60px;    /* Footer height */
 }
 
-#theFotter {
-    position:absolute;
-    bottom:0;
+#mainElement {
+    margin-top: 100px;
+    position: relative; /* For absolutely positioned footer */
+    min-height: 100vh;
+}
+
+#theFooter {
+    position:static;
+    bottom: 0;
     width:100%;
-    height:60px;
+    height:60px;/* Footer height */
     margin: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     background-color: #ffffff;
     text-align: center;
 }
-/**/

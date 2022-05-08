@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php require_once('head_links_scripts.php'); ?>
-    <title>Recipes</title>
-</head>
-<body>
-
 <?php require_once('header.php'); ?>
 
-<main class="login-form" id="mainElemnt">
-    <div class="container">
+<main class="login-form" id="mainElement">
+    <div class="container" id="content-wrap">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -61,5 +50,3 @@
 
 </main>
 <?php require_once ('footer.php')?>
-</body>
-</html>
