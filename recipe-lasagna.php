@@ -27,36 +27,53 @@
       <section id="mitzrahim">
 
         <header>
+            <br>
 
           <h2>Ingredients (8 servings):</h2>
         </header>
         <strong>For the meat sauce:</strong>
-        <ul>
-          <li>2 teaspoons extra virgin olive oil </li>
-          <li>1 pound ground beef chuck</li>
-          <li>1/2 medium onion, diced (about 3/4 cup)</li>
-          <li>1/2 large bell pepper (green, red, or yellow), diced (about 3/4 cup)</li>
-          <li>2 cloves garlic, minced</li>
-          <li>1 (28-ounce) can good-quality tomato sauce</li>
-          <li>3 ounces tomato paste (half a 6-ounce can)</li>
-          <li>1 (14 ounce) can crushed tomatoes</li>
-          <li>2 tablespoons chopped fresh oregano, or 2 teaspoons dried oregano</li>
-          <li>1/4 cup chopped fresh parsley (preferably flat leaf), packed</li>
-          <li>1 tablespoon Italian seasoning</li>
-          <li>1 pinch garlic powder and/or garlic salt</li>
-          <li>1 tablespoon red or white wine vinegar</li>
-          <li>1 tablespoon to 1/4 cup sugar (to taste, optional)</li>
-          <li>Salt</li>
+          <div>
+          <input type="checkbox" id="lasagna-oil" name="lasagna-oil">
+              <label for="lasagna-oil" class="checkbox">2 teaspoons extra virgin olive oil
+          </div>
+          <div>
+          <input type="checkbox" id="lasagna-onion" name="lasagna-onion">
+              <label for="lasagna-onion" class="checkbox">1/2 medium onion, diced (about 3/4 cup)</label>
+          </div>
+          <div>
+          <input type="checkbox" id="lasagna-garlic" name="lasagna-garlic">
+              <label for="lasagna-garlic" class="checkbox">2 cloves garlic, minced</label>
+          </div>
+          <div>
+          <input type="checkbox" id="lasagna-oregano" name="lasagna-oregano">
+              <label for="lasagna-oregano" class="checkbox">1 teaspoon dried oregano</label>
+          </div>
+          <div>
+          <input type="checkbox" id="lasagna-beef" name="lasagna-beef">
+              <label for="lasagna-beef" class="checkbox">1 pound ground beef chuck/label>
+          </div>
+          <div>
+          <input type="checkbox" id="lasagna-pepper" name="lasagna-pepper">
+              <label for="lasagna-pepper" class="checkbox">1/2 large bell pepper (green, red, or yellow), diced (about 3/4 cup)</label>
+          </div>
 
-
-        </ul>
         <strong>To assemble the lasagna:</strong>
-        <ul>
-          <li>1/2 pound dry lasagna noodles (requires 9 lasagna noodles - unbroken)</li>
-          <li>15 ounces ricotta cheese</li>
-          <li>1 1/2 pounds (24 ounces) mozzarella cheese, grated or sliced</li>
-          <li>1/4 pound (4 ounces) freshly grated Parmesan cheese</li>
-        </ul>
+          <div>
+          <input type="checkbox" id="lasagna-noodles" name="lasagna-noodles">
+              <label for="lasagna-noodles" class="checkbox">1/2 pound dried lasagna noodles</label>
+          </div>
+          <div>
+          <input type="checkbox" id="lasagna-ricotta" name="lasagna-ricotta">
+              <label for="lasagna-ricotta" class="checkbox">15 ounces ricotta cheese</label>
+          </div>
+          <div>
+          <input type="checkbox" id="lasagna-mozzarella" name="lasagna-mozzarella">
+              <label for="lasagna-mozzarella" class="checkbox">1/2 cup mozzarella cheese</label>
+          </div>
+          <div>
+          <input type="checkbox" id="lasagna-parmesan" name="lasagna-parmesan">
+              <label for="lasagna-parmesan" class="checkbox">1/2 cup freshly grated Parmesan cheese</label>
+          </div>
       </section>
       <section id="ofen-ahana">
         <br>

@@ -46,3 +46,7 @@ article h1 {
     background-color: #ffffff;
     text-align: center;
 }
+
+input[type=checkbox]:checked~.checkbox { /* strikethrough text for checkbox items*/
+    text-decoration: line-through;
+}
