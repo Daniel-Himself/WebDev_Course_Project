@@ -12,7 +12,7 @@
             </thead>
             <tbody>
             <tr>
-                <td><a href="recipes/lasagna.php">Lasagna</a></td>
+                <td><a href="recipe-lasagna.php">Lasagna</a></td>
                 <td>2022/04/04</td>
                 <td>Daniel S</td>
             </tr>
