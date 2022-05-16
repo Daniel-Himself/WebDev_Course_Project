@@ -4,24 +4,23 @@
     header("location: index.php");
     exit;
 } ?>
-
     <main class="login-form" id="mainElement">
         <div class="container" id="content-wrap">
             <?php
             if(isset($_POST['login_form'])) {
                 if (isset($users[$_POST['login_email']])){
-                    if ($users[$_POST['login_email']]["login_password"] == $_POST['login_password'] ) {
+                    if ($users[$_POST['login_email']]["password"] === $_POST['password'] ) {
                         if ($_POST['remember_me']==="1") {
                             setcookie("login_email", $_POST['login_email'], time()+60*60*24*7);
                         }
                         $_SESSION["login_email"] = $_POST['login_email'];
-                        header('Location: recipe_page.php');/*TODO finde out what line bellow does*/
+                        header('Location: recipes_page.php');
                         exit;
                     } else { ?>
                         <div class="alert alert-danger" role="alert">
                             Wrong Password
                         </div>
-                        <?php /*TODO fix the alert to match form size */
+                        <?php
                     }
                 } else { ?>
 
@@ -74,7 +73,6 @@
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>

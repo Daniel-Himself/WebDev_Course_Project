@@ -1,6 +1,12 @@
+<?php
+session_start();
+require_once("users.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,6 +52,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="login_page.php" class="nav-link">Sign in</a>
+                </li>
+                <li class="nav-item">
+                        <a href="logout.php" class="nav-link">Logout</a>
                 </li>
             </ul>
         </div>
