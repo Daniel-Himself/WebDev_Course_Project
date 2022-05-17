@@ -1,15 +1,5 @@
 <?php
 $users=array(
-    "gal@wpsite.co.il"=>array(
-        "first_name"=>"Gal",
-        "last_name"=>"Hadad",
-        "password"=>"123"
-    ),
-    "avi@gmail.co.il"=>array(
-        "first_name"=>"Avi",
-        "last_name"=>"Coen",
-        "password"=>"123"
-    ),
     "test@test.com"=>array(
         "password"=>"1234"
     )

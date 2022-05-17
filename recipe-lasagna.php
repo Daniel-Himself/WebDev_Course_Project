@@ -1,11 +1,50 @@
 <?php require_once('header.php'); ?>
 
 <main id="mainElement">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mr-5 ml-5">
+        <div class="container-fluid">
+            <a class="navbar-brand">Daniel's Lasagna</a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#mitzrahim">Ingredients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#ofen-ahana">Method</a>
+                </li>
+                <li class="nav-item">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#share_modal">Share</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="share_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Share Recipe</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                            <input type="text" class="form-control" id="recipient-name">
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Send message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </ul>
+        </div>
+    </nav>
   <article class="wrapper">
     <article>
 
       <header>
-
         <figure class="figure">
           <img src="/images/lasagna.png" class="figure-img img-fluid rounded" alt="pizza"/>
           <figcaption class="figure-caption text-right">
