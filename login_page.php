@@ -8,12 +8,12 @@
         <div class="container" id="content-wrap">
             <?php
             if(isset($_POST['login_form'])) {
-                if (isset($users[$_POST['login_email']])){
-                    if ($users[$_POST['login_email']]["password"] === $_POST['password'] ) {
-                        if ($_POST['remember_me']==="1") {
-                            setcookie("login_email", $_POST['login_email'], time()+60*60*24*7);
+                if (isset($users[$_POST['user_email']])){
+                    if ($users[$_POST['user_email']]["password"] == $_POST['password'] ) {
+                        if ($_POST['remember_me']=="1") {
+                            setcookie("user_email", $_POST['user_email'], time()+60*60*24*7);
                         }
-                        $_SESSION["login_email"] = $_POST['login_email'];
+                        $_SESSION["user_email"] = $_POST['user_email'];
                         header('Location: recipes_page.php');
                         exit;
                     } else { ?>
@@ -42,14 +42,14 @@
                                 <div class="form-group row">
                                     <label for="login_email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                     <div class="col-md-6">
-                                        <input type="email" id="login_email" class="form-control" name="login_email" required autofocus>
+                                        <input type="email" id="login_email" class="form-control" name="user_email" required autofocus>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="login_password" class="col-md-4 col-form-label text-md-right">Password</label>
                                     <div class="col-md-6">
-                                        <input type="password" id="login_password" class="form-control" name="login_password" required>
+                                        <input type="password" id="login_password" class="form-control" name="password" required>
                                     </div>
                                 </div>
 

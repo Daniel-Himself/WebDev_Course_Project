@@ -43,19 +43,22 @@ require_once("users.php");
     <nav
             class="navbar navbar-expand-lg navbar-dark py-3 fixed-top pb-2 bg-dark"
     >
-        <a href="login_page.php" class="navbar-brand"
+        <a href="index.php" class="navbar-brand"
         >Ali and Daniel's Recipe Book</a>
         <div class="collapse ml-auto navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a href="registration_page.php" class="nav-link">Sign Up</a>
-                </li>
-                <li class="nav-item">
-                    <a href="login_page.php" class="nav-link">Sign in</a>
-                </li>
-                <li class="nav-item">
+                <?php if(!isset($_SESSION['user_email'])) { ?>
+                    <li class="nav-item">
+                        <a href="registration_page.php" class="nav-link">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="login_page.php" class="nav-link">Login</a>
+                    </li>
+                <?php } else { ?>
+                    <li class="nav-item">
                         <a href="logout.php" class="nav-link">Logout</a>
-                </li>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
         <button
