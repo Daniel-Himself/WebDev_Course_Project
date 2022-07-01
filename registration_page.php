@@ -7,7 +7,7 @@
                     <div class="card-header">Sign Up</div>
                     <div class="card-body">
 
-                        <!-- BIGENING OF FORM  -->
+                        <!-- BEGINNING OF FORM  -->
                         <form>
                             <div class="form-group row">
                                 <label for="registration_email" class="col-md-4 col-form-label text-md-right">E-Mail
