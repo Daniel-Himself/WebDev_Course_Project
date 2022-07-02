@@ -9,13 +9,17 @@ if(isset($_POST['submit'])) {
     $p2 = $_POST['password_repeat'];
 
     if ($p != $p2) {
-        $error = "Passwords do not match";
+        $error .= "Passwords do not match";
     } else {
-        // Form is valid, connect to database
-        $mysqli = new mysqli("localhost", "root", "", "project");
-        if ($mysqli->connect_errno) {  // auto generated, to be checked
-            echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-        }
+        require('db.php');
+        
+        // below caode as
+//        // Form is valid, connect to database
+//        $mysqli = new mysqli("localhost", "root", "", "project");
+//        if ($mysqli->connect_error) {
+//            echo "<h2>error connecting to db</h2>";
+//            die();
+//        }
 
         // Sanitize form data
         $e = $mysqli->real_escape_string($e);
@@ -27,10 +31,22 @@ if(isset($_POST['submit'])) {
         $vkey = md5(time() . $e); // encrypted value of the current timestamp with the user email
         // encrypt the password
         $p = md5($p);
+
         // Insert user into database
         $insert = $mysqli->query("INSERT INTO users (email, username, password, vkey) VALUES ('$e', '$u', '$p', '$vkey')");
         if ($insert) {
-            echo "User created successfully"; //TODO replace with email verification
+            // Send email
+            $to = $e;
+            $subject = "Verify your account";
+            $message = "Please click the link below to verify your account: <a href='http://localhost/project/verify.php?vkey=$vkey'>Verify Account</a>";
+            $headers = "From: dsharo10@campus.haifa.ac.il \r\n";
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+            mail($to, $subject, $message, $headers);
+
+            header('location:thankyou.php');
+
         } elseif ($insert->num_rows > 0) {
             // Check if user already exists
             echo "User already exists";
