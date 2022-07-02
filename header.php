@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("users.php");
+require_once("users.php"); // TODO replace users.php with DB connection
 ?>
 
 <!DOCTYPE html>
