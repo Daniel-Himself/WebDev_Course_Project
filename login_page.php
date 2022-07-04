@@ -1,4 +1,5 @@
 <?php require_once('header.php'); ?>
+<?php require_once('db.php'); ?>
 <?php if (isset($_cookie["login_email"])) {
     $_SESSION["login_email"] = $_cookie["login_email"];
     header("location: index.php");
