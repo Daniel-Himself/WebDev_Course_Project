@@ -12,7 +12,7 @@ if(isset($_GET['vkey'])){
         $update = $mysqli->query("UPDATE users SET verified = 1 WHERE vkey = '$vkey' LIMIT 1");
 
         if($update){
-            echo "Your account has been verified. You can now log in.";
+            echo "<h2>Your account has been verified. You can now log in via the <a href='login_page.php'>login page</a>.</h2>";
         } else {
             echo $mysqli->error;
         }
