@@ -9,11 +9,11 @@ if(isset($_POST['submit'])) {
     $p2 = $_POST['password_repeat'];
 
     if ($p != $p2) {
-        $error .= "Passwords do not match";
+        $error .= "Passwords do not match"; // TODO change this into a bootstrap alert
     } else {
         require('db.php');
         
-        // below caode as
+        // below code is already included in db.php, uncomment only if that file causes issues
 //        // Form is valid, connect to database
 //        $mysqli = new mysqli("localhost", "root", "", "project");
 //        if ($mysqli->connect_error) {
@@ -38,14 +38,14 @@ if(isset($_POST['submit'])) {
             // Send email
             $to = $e;
             $subject = "Verify your account";
-            $message = "Please click the link below to verify your account: <a href='http://localhost/project/verify.php?vkey=$vkey'>Verify Account</a>";
+            $message = "Please click the link below to verify your account: <a href='http://localhost/WebDev_HW1/verify.php?vkey=$vkey'>Verify Account</a>";
             $headers = "From: dsharo10@campus.haifa.ac.il \r\n";
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-            mail($to, $subject, $message, $headers);
+            mail($to, $subject, $message, $headers); // send email
 
-            header('location:thankyou.php');
+            header('location:thankyou.php'); // redirect to thank you page
 
         } elseif ($insert->num_rows > 0) {
             // Check if user already exists
