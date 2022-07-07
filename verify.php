@@ -2,7 +2,6 @@
 if(isset($_GET['vkey'])){
     // Process verification
     $vkey = $_GET['vkey'];
-
     $mysqli = new mysqli("localhost", "root", "", "project");
 
     $resultSet = $mysqli->query("SELECT verified,vkey FROM users WHERE verified = 0 AND vkey = '$vkey' LIMIT 1");
@@ -13,13 +12,14 @@ if(isset($_GET['vkey'])){
 
         if($update){
             echo "Your account has been verified. You can now log in.";
+            echo '<a href="login_page.php">Press Here To Login</a>';
         } else {
             echo $mysqli->error;
         }
     }
 }else{
     // No verification key
-    die("No verification key");;
+    die("No verification key");
 }
 
 ?>

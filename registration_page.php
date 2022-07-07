@@ -1,7 +1,7 @@
 <?php require_once('header.php'); ?>
 <?php
 $error=NULL;
-if(isset($_POST['submit'])) {
+if(isset($_POST['submhhit'])) {
     //Get form data
     $e = $_POST['registration_email'];
     $u = $_POST['registration_username'];
@@ -12,7 +12,7 @@ if(isset($_POST['submit'])) {
         $error .= "Passwords do not match";
     } else {
         require('db.php');
-        
+
         // below caode as
 //        // Form is valid, connect to database
 //        $mysqli = new mysqli("localhost", "root", "", "project");
@@ -65,7 +65,7 @@ if(isset($_POST['submit'])) {
                         <div class="card-body">
 
                             <!-- BEGINNING OF FORM  -->
-                            <form method="POST">
+                            <form action="registeration_include.php" method="POST">
                                 <div class="form-group row">
                                     <label for="registration_email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                     <div class="col-md-6">
@@ -99,9 +99,44 @@ if(isset($_POST['submit'])) {
                                                name="password_repeat" required>
                                     </div>
                                 </div>
+                                <?php
+                                if(isset($_GET['Message']))
+                                {
+                                    if($_GET['Message'] == 'passwordsDosentMatch')
+                                    {
+                                        echo '
+                                        <div class="alert alert-danger" role="alert">
+                                        Passwords Dosent Match
+                                        </div>' ;
+                                    }
+                                    elseif($_GET['Message'] == 'EmailAlreadyExists')
+                                    {
+                                        echo '
+                                        <div class="alert alert-danger" role="alert">
+                                        The Email Address Already Exists
+                                        </div>' ;
+                                    }
+                                    elseif($_GET['Message'] == 'EmailVerificationSent')
+                                    {
+                                        echo '
+                                        <div class="alert alert-danger" role="alert">
+                                        Email Verification Sent Via Email Address
+                                        </div>' ;
+                                    }
+                                    elseif($_GET['Message'] == 'EmailVerificationWasNOTSent')
+                                    {
+                                        echo '
+                                        <div class="alert alert-danger" role="alert">
+                                        Email Verification Was Not  Sent !!
+                                        </div>' ;
+                                    }
+                                }
+
+                                ?>
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
                                 </div>
+
                             </form>
                         </div>
 

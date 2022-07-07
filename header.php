@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once("users.php"); // TODO replace users.php with DB connection
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +46,7 @@ require_once("users.php"); // TODO replace users.php with DB connection
         >Ali and Daniel's Recipe Book</a>
         <div class="collapse ml-auto navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
-                <?php if(!isset($_SESSION['user_email'])) { ?>
+                <?php if(!isset($_SESSION['User'])) { ?>
                     <li class="nav-item">
                         <a href="registration_page.php" class="nav-link">Sign Up</a>
                     </li>
