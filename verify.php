@@ -19,7 +19,7 @@ if(isset($_GET['vkey'])){
     }
 }else{
     // No verification key
-    die("No verification key");;
+    die("No verification key");
 }
 
 ?>
