@@ -29,8 +29,6 @@ if(isset($_POST['submit'])) {
 
         // Generate verification key
         $vkey = md5(time() . $e); // encrypted value of the current timestamp with the user email
-        // encrypt the password
-        $p = md5($p);
 
         // Insert user into database
         $insert = $mysqli->query("INSERT INTO users (email, username, password, vkey) VALUES ('$e', '$u', '$p', '$vkey')");
