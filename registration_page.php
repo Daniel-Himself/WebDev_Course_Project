@@ -1,7 +1,7 @@
 <?php require_once('header.php'); ?>
 <?php
 $error=NULL;
-if(isset($_POST['submhhit'])) {
+if(isset($_POST['submit'])) {
     //Get form data
     $e = $_POST['registration_email'];
     $u = $_POST['registration_username'];
@@ -10,16 +10,16 @@ if(isset($_POST['submhhit'])) {
 
     if ($p != $p2) {
         $error .= "Passwords do not match";
+        echo '<br><br><br><br><div class="alert alert-danger" role="alert">'.$error.'</div>';
     } else {
         require('db.php');
 
-        // below caode as
-//        // Form is valid, connect to database
-//        $mysqli = new mysqli("localhost", "root", "", "project");
-//        if ($mysqli->connect_error) {
-//            echo "<h2>error connecting to db</h2>";
-//            die();
-//        }
+        // Form is valid, connect to database
+        $mysqli = new mysqli("localhost", "root", "", "project");
+        if ($mysqli->connect_error) {
+            echo "<h2>error connecting to db</h2>";
+            die();
+        }
 
         // Sanitize form data
         $e = $mysqli->real_escape_string($e);
@@ -35,17 +35,18 @@ if(isset($_POST['submhhit'])) {
         // Insert user into database
         $insert = $mysqli->query("INSERT INTO users (email, username, password, vkey) VALUES ('$e', '$u', '$p', '$vkey')");
         if ($insert) {
-            // Send email
-            $to = $e;
-            $subject = "Verify your account";
-            $message = "Please click the link below to verify your account: <a href='http://localhost/project/verify.php?vkey=$vkey'>Verify Account</a>";
-            $headers = "From: dsharo10@campus.haifa.ac.il \r\n";
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+//            // Send email - Disabled. Turns out it is not a requirement
+//            $to = $e;
+//            $subject = "Verify your account";
+//            $message = "Please click the link below to verify your account: <a href='http://localhost/WebDev_HW1/verify.php?vkey=$vkey'>Verify Account</a>";
+//            $headers = "From: dsharo10@campus.haifa.ac.il \r\n";
+//            $headers = "MIME-Version: 1.0" . "\r\n";
+//            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+//
+//            mail($to, $subject, $message, $headers); // send email
 
-            mail($to, $subject, $message, $headers);
-
-            header('location:thankyou.php');
+            $link="location:thankyou.php?vkey=$vkey";
+            header($link); // redirect to thank you page
 
         } elseif ($insert->num_rows > 0) {
             // Check if user already exists
@@ -65,7 +66,8 @@ if(isset($_POST['submhhit'])) {
                         <div class="card-body">
 
                             <!-- BEGINNING OF FORM  -->
-                            <form action="registeration_include.php" method="POST">
+                            <!--                            <form action="registeration_include.php" method="POST">-->
+                            <form method="POST">
                                 <div class="form-group row">
                                     <label for="registration_email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                     <div class="col-md-6">
@@ -99,44 +101,45 @@ if(isset($_POST['submhhit'])) {
                                                name="password_repeat" required>
                                     </div>
                                 </div>
-                                <?php
-                                if(isset($_GET['Message']))
-                                {
-                                    if($_GET['Message'] == 'passwordsDosentMatch')
-                                    {
-                                        echo '
-                                        <div class="alert alert-danger" role="alert">
-                                        Passwords Dosent Match
-                                        </div>' ;
-                                    }
-                                    elseif($_GET['Message'] == 'EmailAlreadyExists')
-                                    {
-                                        echo '
-                                        <div class="alert alert-danger" role="alert">
-                                        The Email Address Already Exists
-                                        </div>' ;
-                                    }
-                                    elseif($_GET['Message'] == 'EmailVerificationSent')
-                                    {
-                                        echo '
-                                        <div class="alert alert-danger" role="alert">
-                                        Email Verification Sent Via Email Address
-                                        </div>' ;
-                                    }
-                                    elseif($_GET['Message'] == 'EmailVerificationWasNOTSent')
-                                    {
-                                        echo '
-                                        <div class="alert alert-danger" role="alert">
-                                        Email Verification Was Not  Sent !!
-                                        </div>' ;
-                                    }
-                                }
-
-                                ?>
+                                <!--                                --><?php // obsolete block, safe to remove
+                                //                                if(isset($_GET['Message']))
+                                //                                {
+                                //                                    if($_GET['Message'] == 'passwordsDosentMatch')
+                                //                                    {
+                                //                                        echo '
+                                //                                        <div class="alert alert-danger" role="alert">
+                                //                                        Passwords do not match
+                                //                                        </div>' ;
+                                //                                    }
+                                //                                    elseif($_GET['Message'] == 'EmailAlreadyExists')
+                                //                                    {
+                                //                                        echo '
+                                //                                        <div class="alert alert-danger" role="alert">
+                                //                                        The Email address is already in use
+                                //                                        </div>' ;
+                                //                                    }
+                                //                                    elseif($_GET['Message'] == 'EmailVerificationSent')
+                                //                                    {
+                                ////                                        echo '
+                                ////                                        <div class="alert alert-danger" role="alert">
+                                ////                                        Email Verification Sent
+                                ////                                        </div>' ;
+                                //                                        $link="location:thankyou.php?vkey=$vkey";
+                                //                                        header($link); // redirect to thank you page
+                                //                                    }
+                                //                                    elseif($_GET['Message'] == 'EmailVerificationWasNOTSent')
+                                //                                    {
+                                //                                        echo '
+                                //                                        <div class="alert alert-danger" role="alert">
+                                //                                        An error occured while trying to send the verification message
+                                //                                        </div>' ;
+                                //                                    }
+                                //                                }
+                                //
+                                //                                ?>
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
                                 </div>
-
                             </form>
                         </div>
 

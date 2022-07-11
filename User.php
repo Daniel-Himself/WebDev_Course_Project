@@ -127,7 +127,7 @@ class User
         $username = $result['username'];
         $emailADDRESS = $user->getEmail();
         if ($result > 0) {
-            // After Fetching The Sql DATABASE For The PASSWORD We Identify At As A New Variable(" $_password ").
+            // After fetching the Sql DB For The PASSWORD We identify it as a new variable(" $_password ").
             $_password = $result["password"];
             // We Check The 2 PASSWORD The Password That We Writed it And The Password In The DataBase If They Are Equal.
             $db::disconnect();
@@ -142,7 +142,7 @@ class User
                 $_SESSION["User"] = $username;
                 return "User Success";
             } elseif ($pwd != $_password) {
-                //! If The Password Are Not Equal Then He Cant Log In And He Will Failed!!!.
+                // If passwords do not match, the verification fails.
                 return "User invalid password";
             } elseif ($result["verified"] == "0") {
                 return "User is Deactiveated";
@@ -151,44 +151,44 @@ class User
         return "Email Was Not Found";
     }
 
-
-    public function SendAnEmailForVerifaction($email)
-    {
-        require 'vendor/phpmailer/phpmailer/src/Exception.php';
-        require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
-        require 'vendor/phpmailer/phpmailer/src/SMTP.php';
-        require "vendor/autoload.php";
-        $db = new dbClass();
-        $db::connect();
-        $sql = "select * FROM users WHERE email = '$email' ";
-        $statement = $db::$connection->query($sql);
-        $statement->fetch();
-        $count = $statement->rowCount();
-        if ($count > 0) {
-                $mail = new PHPMailer();
-                $mail->IsSMTP();
-                $mail->Host = "smtp.mailtrap.io"; // Enter your host here
-                $mail->STMPSecure = "tsl";
-                $mail->SMTPDebug  = 1;
-                $mail->SMTPAuth = true;
-                $mail->Username = "015e96ca2db36b"; // Enter your email here
-                $mail->Password = "267e8114620148"; //Enter your passwrod here
-                $mail->Port = '2525';
-                $mail->IsHTML(true);
-                $mail->From = "noReply@gmail.com";
-                $mail->Subject = "Verify your account";
-                $mail->Body = "Hi <br><br>
-                        Please click the link below to verify your account:
-                         <a href='http://localhost/WebDev_HW1/Reset_password_include.php?vkey=$token'>Verify Account</a>
-                        ";
-                $mail->setFrom("from@example.com", "Mailer");
-                $mail->AddAddress("$email", "Information");
-                if ($mail->Send())
-                    return true;
-                return false;
-            
-        }
-    }
+// This complete function has no use since we disabled email verification
+//    public function SendAnEmailForVerifaction($email)
+//    {
+//        require 'vendor/phpmailer/phpmailer/src/Exception.php';
+//        require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
+//        require 'vendor/phpmailer/phpmailer/src/SMTP.php';
+//        require "vendor/autoload.php";
+//        $db = new dbClass();
+//        $db::connect();
+//        $sql = "select * FROM users WHERE email = '$email' ";
+//        $statement = $db::$connection->query($sql);
+//        $statement->fetch();
+//        $count = $statement->rowCount();
+//        if ($count > 0) {
+//                $mail = new PHPMailer();
+//                $mail->IsSMTP();
+//                $mail->Host = "smtp.mailtrap.io"; // Enter your host here
+//                $mail->STMPSecure = "tsl";
+//                $mail->SMTPDebug  = 1;
+//                $mail->SMTPAuth = true;
+//                $mail->Username = "015e96ca2db36b"; // Enter your email here
+//                $mail->Password = "267e8114620148"; //Enter your passwrod here
+//                $mail->Port = '2525';
+//                $mail->IsHTML(true);
+//                $mail->From = "noReply@gmail.com";
+//                $mail->Subject = "Verify your account";
+//                $mail->Body = "Hi <br><br>
+//                        Please click the link below to verify your account:
+//                         <a href='http://localhost/WebDev_HW1/Reset_password_include.php?vkey=$token'>Verify Account</a>
+//                        ";
+//                $mail->setFrom("from@example.com", "Mailer");
+//                $mail->AddAddress("$email", "Information");
+//                if ($mail->Send())
+//                    return true;
+//                return false;
+//
+//        }
+//    }
     public function SendRequestForPasswordReset($email)
     {
         require 'vendor/phpmailer/phpmailer/src/Exception.php';
