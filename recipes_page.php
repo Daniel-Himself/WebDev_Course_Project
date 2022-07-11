@@ -41,7 +41,7 @@ if(isset($_COOKIE['user_email']) || isset($_SESSION['User']))
                                 </form>
                             <?php } else {
                                 ?>
-                                You Dont Have The Permission For This Column
+                                Only the author can edit or delete this recipe
 
                             <?php } ?>
                         </td>
@@ -64,9 +64,11 @@ if(isset($_COOKIE['user_email']) || isset($_SESSION['User']))
                                 <input name="recipeNameEdit" required type="text" class="form-control" id="first_name" value="<?php echo $editData['recipe_name']?>">
                             </div>
                             <div class="row-3col-3">
+                                </br>
                                 <label for="last" class="form-label">Recipe Title</label>
                                 <input name="recipeTitleEdit" required type="text" class="form-control" id="title" value="<?php echo $editData['recipe_title']?>">
                             </div>
+                            </br>
                             <div class="row-3col-3">
                                 <label for="last" class="form-label">Recipe method</label>
                                 <textarea class="form-control" name="recipeMethodEdit" cols="40" rows="5"><?php echo $editData['recipe_method']?></textarea>
@@ -90,8 +92,8 @@ if(isset($_COOKIE['user_email']) || isset($_SESSION['User']))
                                 <label for="first" class="form-label">Recipe Name</label>
                                 <input name="recipeName" required type="text" class="form-control" id="first_name">
                             </div>
-                            <div class="row-3col-3">
-                                <label for="last" class="form-label">Recipe Title</label>
+                            <div class="row-3col-3">    
+                                <label for="last" class="form-label pt-1">A short summary</label>
                                 <input name="recipeTitle" required type="text" class="form-control" id="title">
                             </div>
                             <div class="row-3col-3">
@@ -111,13 +113,13 @@ if(isset($_COOKIE['user_email']) || isset($_SESSION['User']))
                             <div id="tbody6"></div>
                             <div id="tbody7"></div>
                             <div class='row-3col-3'>
+                                <div style="padding:30px;" class="row-4col-2">
+                                    <button type="button" onclick="addItem();" class="btn btn-block btn-secondary">Add Another Ingredient</button>
+                                </div>
                                 <label for='last' class='form-label'>Recipe Image</label>
                                 <input class='form-control' required type="file" name="image" placeholder="Product Image" />
                             </div>
 
-                            <div style="padding:30px;" class="row-4col-2">
-                                <button type="button" onclick="addItem();" class="btn btn-block btn-secondary">Add Another Ingredient</button>
-                            </div>
                             <div style="padding:30px;" class="row-4col-2">
                                 <button class="btn btn-block btn-primary" name="addrecipe" id="add_user">Add Recipe</button>
                             </div>
