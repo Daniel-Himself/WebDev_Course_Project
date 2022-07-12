@@ -1,5 +1,6 @@
 <?php require_once('header.php'); ?>
 <?php require_once('db.php'); ?>
+<?php require('connect_to_db.php'); ?>
     <main class="login-form" id="mainElement">
         <div class="container" id="content-wrap">
             <div class="row justify-content-center">
@@ -25,9 +26,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-6 offset-md-4">
                                         <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="1" name="remember_me"> Remember Me
-                                            </label>
+                                            <label><input type="checkbox" value="1" name="remember_me">Remember Me</label>
                                         </div>
                                     </div>
                                 </div>

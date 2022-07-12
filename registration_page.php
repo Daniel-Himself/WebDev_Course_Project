@@ -15,11 +15,7 @@ if(isset($_POST['submit'])) {
         require('db.php');
 
         // Form is valid, connect to database
-        $mysqli = new mysqli("localhost", "root", "", "project");
-        if ($mysqli->connect_error) {
-            echo "<h2>error connecting to db</h2>";
-            die();
-        }
+        require('connect_to_db.php');
 
         // Sanitize form data
         $e = $mysqli->real_escape_string($e);
@@ -32,6 +28,7 @@ if(isset($_POST['submit'])) {
 
         // Insert user into database
         $insert = $mysqli->query("INSERT INTO users (email, username, password, vkey) VALUES ('$e', '$u', '$p', '$vkey')");
+
         if ($insert) {
 //            // Send email - Disabled. Turns out it is not a requirement
 //            $to = $e;
@@ -46,11 +43,9 @@ if(isset($_POST['submit'])) {
             $link="location:thankyou.php?vkey=$vkey";
             header($link); // redirect to thank you page
 
-        } elseif ($insert->num_rows > 0) {
-            // Check if user already exists
-            echo "User already exists";
         } else {
-            echo $mysqli->error;
+//            echo $mysqli->error;
+            echo '<br><br><br><br><div class="alert alert-danger" role="alert">'.$mysqli->error.'</div>';
         }
     }
 }

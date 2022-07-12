@@ -1,9 +1,10 @@
 <?php
 if (isset($_POST['login_form'])) {
+    require('connect_to_db.php');
     require_once 'User.php';
     $User = new User();
-    $emailAddress = $_POST['user_email'];
-    $emailPassword = $_POST['password'];
+    $email = $_POST['user_email'];
+    $password = $_POST['password'];
     if (isset($_POST['remember_me'])) {
         $rememberME = 1;
         echo $rememberME;
@@ -11,9 +12,10 @@ if (isset($_POST['login_form'])) {
         $rememberME = 0;
         echo $rememberME;
     }
-    $User->users($emailAddress, '', $emailPassword, '', '');
+    $User->users($email, '', $password, '', '');
     $result = $User->AcountLogin($User, $rememberME);
     if ($result == 'User Success') {
+        $_SESSION['user_email'] = $email;
         header("location: ./recipes_page.php?Message=Success");
         exit();
     }
