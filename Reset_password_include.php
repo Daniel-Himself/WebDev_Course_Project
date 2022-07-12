@@ -10,7 +10,7 @@ if (isset($_POST['forgotPASS']) || isset($_GET['Message1'])) {
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">Log in</div>
+                        <div class="card-header">Reset Password</div>
                         <div class="card-body">
                             <form action="checkEmail.php" method="POST">
                                 <div class="form-group row">

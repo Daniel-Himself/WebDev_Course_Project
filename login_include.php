@@ -7,15 +7,14 @@ if (isset($_POST['login_form'])) {
     $password = $_POST['password'];
     if (isset($_POST['remember_me'])) {
         $rememberME = 1;
-        echo $rememberME;
     } else {
         $rememberME = 0;
-        echo $rememberME;
     }
     $User->users($email, '', $password, '', '');
     $result = $User->AcountLogin($User, $rememberME);
     if ($result == 'User Success') {
         $_SESSION['user_email'] = $email;
+        $_SESSION['user']=$User;
         header("location: ./recipes_page.php?Message=Success");
         exit();
     }
