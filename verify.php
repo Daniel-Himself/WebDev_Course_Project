@@ -2,7 +2,6 @@
 if(isset($_GET['vkey'])){
     // Process verification
     $vkey = $_GET['vkey'];
-
     $mysqli = new mysqli("localhost", "root", "", "project");
 
     $resultSet = $mysqli->query("SELECT verified,vkey FROM users WHERE verified = 0 AND vkey = '$vkey' LIMIT 1");

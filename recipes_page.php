@@ -1,60 +1,147 @@
-<?php require_once('header.php'); ?>
-<main id="mainElement">
-    <div class="container p-5">
+<?php require_once('header.php');
+require_once('db.php');
+$db = new dbClass();
+$Data = $db->FetchData();
+if(isset($_COOKIE['user_email']) || isset($_SESSION['User']))
+{
+    ?>
+    <main id="mainElement">
+        <div class="container p-5">
 
-        <table class="table table-light table-hover table-bordered" id="recipes">
-            <thead>
-            <tr>
-                <th scope="col">Recipe Name</th>
-                <th scope="col">Date posted (yyyy/mm/dd)</th>
-                <th scope="col">Author</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><a href="recipe-lasagna.php">Lasagna</a></td>
-                <td>2022/04/04</td>
-                <td>Daniel S</td>
-            </tr>
-            <tr>
-                <td>Goulash</td>
-                <td>2021/04/02</td>
-                <td>Ali S</td>
-            </tr>
-            <tr>
-                <td>Pizza</td>
-                <td>2022/04/01</td>
-                <td>Daniel S</td>
-            </tr>
-            <tr>
-                <td>Cheesecake Flavoured Ice Cream</td>
-                <td>2022/03/11</td>
-                <td>Daniel S</td>
-            </tbody>
-        </table>
+            <table class="table table-light table-hover table-bordered" id="recipes">
+                <thead>
+                <tr>
+                    <th scope="col">Recipe Name</th>
+                    <th scope="col">Date posted (yyyy/mm/dd)</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Status</th>
 
-        <!--    Inputs to add new recipes, will be functional in HW2-->
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                foreach ($Data as $DataType) {
+                    ?>
+                    <tr>
+                        <td><a href="recipe-lasagna.php?message=<?php echo $DataType['id'] ?>"><?php echo $DataType['recipe_name'] ?></a></td>
+                        <td><?php echo $DataType['dateAdded'] ?></td>
+                        <td><?php echo $DataType['Aothur'] ?></td>
+                        <td>
+                            <?php
 
-        <!--    <div class="add_user_form">-->
-        <!--      <div class="row p-5 align-items-end ">-->
-        <!--        <div class="col-3">-->
-        <!--          <label for="first" class="form-label">Recipe Name</label>-->
-        <!--          <input type="text" class="form-control" id="first_name">-->
-        <!--        </div>-->
-        <!--                <div class="col-3">-->
-        <!--                  <label for="last" class="form-label">שם משפחה</label>-->
-        <!--                  <input type="text" class="form-control" id="last_name">-->
-        <!--                </div>-->
-        <!--                <div class="col-3">-->
-        <!--                  <label for="last" class="form-label">טלפון</label>-->
-        <!--                  <input type="tel" class="form-control" id="phone">-->
-        <!--                </div>-->
-        <!--        <div class="col-2">-->
-        <!--          <button class="btn btn-block btn-primary" id="add_user">Add Recipe</button>-->
-        <!--        </div>-->
-        <!--      </div>-->
-        <!--    </div>-->
-    </div>
+                            if (isset($_SESSION['User']) && $DataType['Aothur'] == $_SESSION['User']) { ?>
+                                <form action="" method="POST">
+                                    <button name="editButton" class="btn btn-block btn-outline-warning" id="add_user">Edit Recipe</button>
+                                    <input type="hidden" name="hiddenDataEdit" value="<?php echo $DataType['id'] ?>">
+                                </form>
+                                <form action="recipe_include.php" method="POST">
+                                    <button onclick="return confirm('Are you sure you want to delete this item?');"
+                                            type="submit" name="deleteButton" class="btn btn-block btn-outline-danger" id="add_user">Delete Recipe</button>
+                                    <input type="hidden" name="hiddenData" value="<?php echo $DataType['id'] ?>">
+                                </form>
+                            <?php } else {
+                                ?>
+                                Only the author can edit or delete this recipe
 
-</main>
-<?php require_once('footer.php') ?>
+                            <?php } ?>
+                        </td>
+
+                    </tr>
+                <?php } ?>
+
+                </tbody>
+            </table>
+
+            <?php
+            if (isset($_POST['editButton'])) {
+                $editData = $db->FetchDataViaID($_POST['hiddenDataEdit']);
+                ?>
+                <div class="add_user_form">
+                    <form action="addRecipe_include.php" method="POST">
+                        <div class="row p-5 align-items-end ">
+                            <div class="row-1col-3">
+                                <label for="first" class="form-label">Recipe Name</label>
+                                <input name="recipeNameEdit" required type="text" class="form-control" id="first_name" value="<?php echo $editData['recipe_name']?>">
+                            </div>
+                            <div class="row-3col-3">
+                                </br>
+                                <label for="last" class="form-label">Recipe Title</label>
+                                <input name="recipeTitleEdit" required type="text" class="form-control" id="title" value="<?php echo $editData['recipe_title']?>">
+                            </div>
+                            </br>
+                            <div class="row-3col-3">
+                                <label for="last" class="form-label">Recipe method</label>
+                                <textarea class="form-control" name="recipeMethodEdit" cols="40" rows="5"><?php echo $editData['recipe_method']?></textarea>
+                            </div>
+                            <div style="padding:30px;" class="row-4col-2">
+                                <button class="btn btn-block btn-primary" name="UpdateRecipe" id="add_user">Update Recipe</button>
+                                <input type="hidden" name="hiddenDataEdit" value="<?php echo $editData['id'] ?>">
+
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+            <?php } else { ?>
+
+                <div class="add_user_form">
+                    <form action="addRecipe_include.php" enctype="multipart/form-data" method="POST">
+                        <div class="row p-5 align-items-end ">
+                            <div class="row-1col-3">
+                                <label for="first" class="form-label">Recipe Name</label>
+                                <input name="recipeName" required type="text" class="form-control" id="first_name">
+                            </div>
+                            <div class="row-3col-3">    
+                                <label for="last" class="form-label pt-1">A short summary</label>
+                                <input name="recipeTitle" required type="text" class="form-control" id="title">
+                            </div>
+                            <div class="row-3col-3">
+                                <label for="last" class="form-label">Recipe method</label>
+                                <textarea class="form-control" name="recipeMethod" cols="40" rows="5"></textarea>
+                            </div>
+                            <div class='row-3col-3'>
+                                <label for='last' class='form-label'>ingredient</label>
+                                <input required type='tel' name='items[]' value='' class='form-control'>
+                            </div>
+                            <div id="tbody0"></div>
+                            <div id="tbody1"></div>
+                            <div id="tbody2"></div>
+                            <div id="tbody3"></div>
+                            <div id="tbody4"></div>
+                            <div id="tbody5"></div>
+                            <div id="tbody6"></div>
+                            <div id="tbody7"></div>
+                            <div class='row-3col-3'>
+                                <div style="padding:30px;" class="row-4col-2">
+                                    <button type="button" onclick="addItem();" class="btn btn-block btn-secondary">Add Another Ingredient</button>
+                                </div>
+                                <label for='last' class='form-label'>Recipe Image</label>
+                                <input class='form-control' required type="file" name="image" placeholder="Product Image" />
+                            </div>
+
+                            <div style="padding:30px;" class="row-4col-2">
+                                <button class="btn btn-block btn-primary" name="addrecipe" id="add_user">Add Recipe</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            <?php } ?>
+        </div>
+        <script>
+            var items = 0;
+
+            function addItem() {
+                items++;
+                var html = "<div class='row-3col-3'>";
+                html += " <label for='last' class='form-label'>ingredient</label>";
+                html += "<input required type='tel' name='items[]' value='' class='form-control'>";
+                html += "</div>";
+                document.getElementById("tbody" + items + "").innerHTML = html;
+
+            }
+        </script>
+
+    </main>
+<?php } require_once('footer.php') ?>
