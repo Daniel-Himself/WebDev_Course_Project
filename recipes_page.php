@@ -148,4 +148,4 @@ if(isset($_COOKIE['user_email']) || isset($_SESSION['User']))
         </script>
 
     </main>
-<?php } require_once('footer.php') ?>
+<?php } require_once('staticFooter.php') ?>

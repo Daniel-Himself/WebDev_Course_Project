@@ -105,4 +105,4 @@ if (isset($_GET['message'])) {
         </article>
     </main>
 
-<?php require_once('footer.php') ?>
+<?php require_once('staticFooter.php') ?>
