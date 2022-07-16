@@ -73,7 +73,8 @@
                                 </div>
                             </form>
                             <div style="float: right; margin:10px; width:auto;" class="col-md-6 offset-md-4">
-                                <form action="./Reset_password_include.php" method="POST">
+<!--                            <form action="./Reset_password_include.php" method="POST">-->
+                                <form action="./forgot.php" method="POST">
                                     <button name="forgotPASS" type="submit" class="btn btn-outline-warning">Forgot Your Password?</button>
                                 </form>
                             </div>
