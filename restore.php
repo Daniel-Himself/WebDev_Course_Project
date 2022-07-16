@@ -12,8 +12,8 @@ if ($results->num_rows < 0) {
 
 if(isset($_POST['restore_password'])) {
     $email = $_POST['email'];
-    $password = $_POST['password'];
-    $sql = "UPDATE `users` SET `password`='$password' WHERE email = '$email'";
+    $newpassword = $_POST['password'];
+    $sql = "UPDATE `users` SET `password`='$newpassword' WHERE email = '$email'";
     $results =  $mysqli->query($sql);
     if ($results) {
         echo "<br><br><br><br><br><br>Password was reset successfully";
@@ -24,11 +24,12 @@ if(isset($_POST['restore_password'])) {
 }
 ?>
 <form method="post">
+    <br><br><br><br><br><br>
     <label for="email">Email Address</label>
     <input id="email" name="email" type="email"/>
     <label for="password">New Password</label>
     <input id="password" name="password" type="password"/>
-    <input type="submit" name="restore_password" value="איפוס סיסמא"/>
+    <input type="submit" name="restore_password" value="Reset Password"/>
 </form>
 
 <?php require_once('footer.php'); ?>

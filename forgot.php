@@ -55,5 +55,5 @@ if (isset($_POST['forgotPASS']) || isset($_GET['Message1'])) {
         </div>
     </div>
 </main>
-<?php
-}
+<?php }
+require_once('footer.php'); ?>
