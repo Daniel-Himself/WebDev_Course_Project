@@ -64,11 +64,11 @@ if(isset($_COOKIE['user_email']) || isset($_SESSION['User']))
                                 <input name="recipeNameEdit" required type="text" class="form-control" id="first_name" value="<?php echo $editData['recipe_name']?>">
                             </div>
                             <div class="row-3col-3">
-                                </br>
+                                <br>
                                 <label for="last" class="form-label">Recipe Title</label>
                                 <input name="recipeTitleEdit" required type="text" class="form-control" id="title" value="<?php echo $editData['recipe_title']?>">
                             </div>
-                            </br>
+                            <br>
                             <div class="row-3col-3">
                                 <label for="last" class="form-label">Recipe method</label>
                                 <textarea class="form-control" name="recipeMethodEdit" cols="40" rows="5"><?php echo $editData['recipe_method']?></textarea>
@@ -91,17 +91,20 @@ if(isset($_COOKIE['user_email']) || isset($_SESSION['User']))
                             <div class="row-1col-3">
                                 <label for="first" class="form-label">Recipe Name</label>
                                 <input name="recipeName" required type="text" class="form-control" id="first_name">
+                                <br>
                             </div>
                             <div class="row-3col-3">    
-                                <label for="last" class="form-label pt-1">A short summary</label>
+                                <label for="last" class="form-label pt-1">Short summary</label>
                                 <input name="recipeTitle" required type="text" class="form-control" id="title">
+                                <br>
                             </div>
                             <div class="row-3col-3">
                                 <label for="last" class="form-label">Recipe method</label>
                                 <textarea class="form-control" name="recipeMethod" cols="40" rows="5"></textarea>
+                                <br>
                             </div>
                             <div class='row-3col-3'>
-                                <label for='last' class='form-label'>ingredient</label>
+                                <label for='last' class='form-label'>Ingredient</label>
                                 <input required type='tel' name='items[]' value='' class='form-control'>
                             </div>
                             <div id="tbody0"></div>
@@ -115,6 +118,7 @@ if(isset($_COOKIE['user_email']) || isset($_SESSION['User']))
                             <div class='row-3col-3'>
                                 <div style="padding:30px;" class="row-4col-2">
                                     <button type="button" onclick="addItem();" class="btn btn-block btn-secondary">Add Another Ingredient</button>
+                                    <br>
                                 </div>
                                 <label for='last' class='form-label'>Recipe Image</label>
                                 <input class='form-control' required type="file" name="image" placeholder="Product Image" />
