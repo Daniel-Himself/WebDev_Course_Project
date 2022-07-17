@@ -77,6 +77,15 @@ class dbClass
         return false;
     }
 
+    public static function getUserNameByEmail($email){
+        $db = new dbClass();
+        $db::connect();
+        $sql = "SELECT username FROM users WHERE email = '$email'";
+        $statement = $db::$connection->query($sql);
+        $Data = $statement->fetch();
+        return $Data['username'];
+    }
+
     public static function EditRecipe($recipeName, $recipeTitle, $recipeMethod, $recipeID)
     {
         $db = new dbClass();
