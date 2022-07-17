@@ -136,7 +136,6 @@ class User
                 session_start();
                 $_SESSION["User"] = $username;
                 setcookie("user_email", $emailADDRESS, time() + 60 * 60 * 24 * 7);
-                setcookie("user_password", $pwd, time() + 60 * 60 * 24 * 7);
                 setcookie("remember_me", "true", time() + 60 * 60 * 24 * 7);
                 return "User Success";
 

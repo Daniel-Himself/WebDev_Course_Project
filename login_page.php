@@ -23,11 +23,7 @@
                                 <div class="form-group row">
                                     <label for="login_password" class="col-md-4 col-form-label text-md-right">Password</label>
                                     <div class="col-md-6">
-                                        <input type="password" id="login_password" class="form-control" name="password" required value="<?php
-                                        if(isset($_COOKIE['user_password'])){
-                                            echo $_COOKIE['user_password'];
-                                        }
-                                        ?>">
+                                        <input type="password" id="login_password" class="form-control" name="password" required value="">
                                     </div>
                                 </div>
 
