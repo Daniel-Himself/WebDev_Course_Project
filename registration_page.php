@@ -30,16 +30,6 @@ if(isset($_POST['submit'])) {
         $insert = $mysqli->query("INSERT INTO users (email, username, password, vkey) VALUES ('$e', '$u', '$p', '$vkey')");
 
         if ($insert) {
-//            // Send email - Disabled. Turns out it is not a requirement
-//            $to = $e;
-//            $subject = "Verify your account";
-//            $message = "Please click the link below to verify your account: <a href='http://localhost/WebDev_HW1/verify.php?vkey=$vkey'>Verify Account</a>";
-//            $headers = "From: dsharo10@campus.haifa.ac.il \r\n";
-//            $headers = "MIME-Version: 1.0" . "\r\n";
-//            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-//
-//            mail($to, $subject, $message, $headers); // send email
-
             $link="location:thankyou.php?vkey=$vkey";
             header($link); // redirect to thank you page
 
@@ -59,7 +49,6 @@ if(isset($_POST['submit'])) {
                         <div class="card-body">
 
                             <!-- BEGINNING OF FORM  -->
-                            <!--                            <form action="registeration_include.php" method="POST">-->
                             <form method="POST">
                                 <div class="form-group row">
                                     <label for="registration_email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>

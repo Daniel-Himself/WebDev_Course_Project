@@ -1,11 +1,6 @@
 <?php
 require_once 'db.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\SMTP;
-
-
 class User
 {
 
@@ -154,88 +149,6 @@ class User
         return "Email Was Not Found";
     }
 
-// This complete function has no use since we disabled email verification
-//    public function SendAnEmailForVerifaction($email)
-//    {
-//        require 'vendor/phpmailer/phpmailer/src/Exception.php';
-//        require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
-//        require 'vendor/phpmailer/phpmailer/src/SMTP.php';
-//        require "vendor/autoload.php";
-//        $db = new dbClass();
-//        $db::connect();
-//        $sql = "select * FROM users WHERE email = '$email' ";
-//        $statement = $db::$connection->query($sql);
-//        $statement->fetch();
-//        $count = $statement->rowCount();
-//        if ($count > 0) {
-//                $mail = new PHPMailer();
-//                $mail->IsSMTP();
-//                $mail->Host = "smtp.mailtrap.io"; // Enter your host here
-//                $mail->STMPSecure = "tsl";
-//                $mail->SMTPDebug  = 1;
-//                $mail->SMTPAuth = true;
-//                $mail->Username = "015e96ca2db36b"; // Enter your email here
-//                $mail->Password = "267e8114620148"; //Enter your passwrod here
-//                $mail->Port = '2525';
-//                $mail->IsHTML(true);
-//                $mail->From = "noReply@gmail.com";
-//                $mail->Subject = "Verify your account";
-//                $mail->Body = "Hi <br><br>
-//                        Please click the link below to verify your account:
-//                         <a href='http://localhost/WebDev_HW1/Reset_password_include.php?vkey=$token'>Verify Account</a>
-//                        ";
-//                $mail->setFrom("from@example.com", "Mailer");
-//                $mail->AddAddress("$email", "Information");
-//                if ($mail->Send())
-//                    return true;
-//                return false;
-//
-//        }
-//    }
-//    public function SendRequestForPasswordReset($email)
-//    {
-//        require 'vendor/phpmailer/phpmailer/src/Exception.php';
-//        require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
-//        require 'vendor/phpmailer/phpmailer/src/SMTP.php';
-//        require "vendor/autoload.php";
-//        $db = new dbClass();
-//        $db::connect();
-//        $sql = "select * FROM users WHERE email = '$email' ";
-//        $statement = $db::$connection->query($sql);
-//        $statement->fetch();
-//        $count = $statement->rowCount();
-//        if ($count > 0) {
-//            $token = "sdfadihawsuidoui12312345`12";
-//            $token = str_shuffle($token);
-//            $token = substr($token, 0, 10);
-//            // interval 10 means: that the token for reseting the password will be vailed for only 10 minutes
-//            $sql = "UPDATE users SET vkey = '$token', token_expire = DATE_ADD(NOW() , INTERVAL 10 MINUTE) WHERE email ='$email'";
-//            $result = $db::$connection->query($sql);
-//            if ($result) {
-//                $mail = new PHPMailer();
-//                $mail->IsSMTP();
-//                $mail->Host = "smtp.mailtrap.io"; // Enter your host here
-//                $mail->STMPSecure = "tsl";
-//                $mail->SMTPDebug  = 1;
-//                $mail->SMTPAuth = true;
-//                $mail->Username = "015e96ca2db36b"; // Enter your email here
-//                $mail->Password = "267e8114620148"; //Enter your passwrod here
-//                $mail->Port = '2525';
-//                $mail->IsHTML(true);
-//                $mail->From = "noReply@gmail.com";
-//                $mail->Subject = "Verify your account";
-//                $mail->Body = "Hi <br><br>
-//                        Please click the link below to verify your account:
-//                         <a href='http://localhost/WebDev_HW1/Reset_password_include.php?email=$email&vkey=$token'>Verify Account</a>
-//                        ";
-//                $mail->setFrom("from@example.com", "Mailer");
-//                $mail->AddAddress("$email", "Information");
-//                if ($mail->Send())
-//                    return true;
-//                return false;
-//            }
-//        }
-//    }
     public function SendRequestForPasswordReset(): void
     {
        //ecoh'<a href="whatever.php" target="_blank">Opens On Another Tab</a>'
@@ -250,7 +163,7 @@ class User
     }
 
    // this function will give the user a new password and update it the our database
-	// and will set the token to empty becuase he already pressed on the link
+	// and will set the token to empty because he already pressed on the link
 	public function resetPasswordViaEmail($email, $token, $password)
 	{
 		$db = new dbClass();
