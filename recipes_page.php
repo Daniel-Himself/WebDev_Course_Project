@@ -29,7 +29,7 @@ if(isset($_COOKIE['user_email']) || isset($_SESSION['User']))
                         <td>
                             <?php
 
-                            if (isset($_SESSION['User']) && $DataType['Aothur'] == $_SESSION['User']) { ?>
+                            if (isset($_SESSION['user_email']) && $DataType['Aothur'] == $_SESSION['user_email']) { ?>
                                 <form action="" method="POST">
                                     <button name="editButton" class="btn btn-block btn-outline-warning" id="add_user">Edit Recipe</button>
                                     <input type="hidden" name="hiddenDataEdit" value="<?php echo $DataType['id'] ?>">

@@ -5,16 +5,19 @@ if (isset($_POST['login_form'])) {
     $User = new User();
     $email = $_POST['user_email'];
     $password = $_POST['password'];
-    if (isset($_POST['remember_me'])) {
+    $rememberME = 0;
+    if (isset($_POST['remember_me']))
         $rememberME = 1;
-    } else {
-        $rememberME = 0;
-    }
+
     $User->users($email, '', $password, '', '');
     $result = $User->AcountLogin($User, $rememberME);
     if ($result == 'User Success') {
         $_SESSION['user_email'] = $email;
         $_SESSION['user']=$User;
+        if ($rememberME == 1) {
+            setcookie("user_email", $email, time() + 60 * 60 * 24 * 7);
+        }
+
         header("location: ./recipes_page.php?Message=Success");
         exit();
     }
