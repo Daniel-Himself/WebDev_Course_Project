@@ -46,7 +46,7 @@ session_start();
         >Ali and Daniel's Recipe Book</a>
         <div class="collapse ml-auto navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
-                <?php if(!isset($_SESSION['User'])) { ?>
+                <?php if(!isset($_SESSION['user_email'])) { ?>
                     <li class="nav-item">
                         <a href="registration_page.php" class="nav-link">Sign Up</a>
                     </li>

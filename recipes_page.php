@@ -20,6 +20,7 @@ if(isset($_COOKIE['user_email']) || isset($_SESSION['User']))
                 </thead>
                 <tbody>
                 <?php
+                $db = new dbClass();
                 foreach ($Data as $DataType) {
                     ?>
                     <tr>
@@ -29,7 +30,7 @@ if(isset($_COOKIE['user_email']) || isset($_SESSION['User']))
                         <td>
                             <?php
 
-                            if (isset($_SESSION['User']) && $DataType['Aothur'] == $_SESSION['User']) { ?>
+                            if (isset($_SESSION['user_email']) && $DataType['Aothur'] == $db->getUserNameByEmail($_SESSION['user_email'])) { ?>
                                 <form action="" method="POST">
                                     <button name="editButton" class="btn btn-block btn-outline-warning" id="add_user">Edit Recipe</button>
                                     <input type="hidden" name="hiddenDataEdit" value="<?php echo $DataType['id'] ?>">
@@ -89,23 +90,23 @@ if(isset($_COOKIE['user_email']) || isset($_SESSION['User']))
                     <form action="addRecipe_include.php" enctype="multipart/form-data" method="POST">
                         <div class="row p-5 align-items-end ">
                             <div class="row-1col-3">
-                                <label for="first" class="form-label">Recipe Name</label>
+                                <label for="first_name" class="form-label">Recipe Name</label>
                                 <input name="recipeName" required type="text" class="form-control" id="first_name">
                                 <br>
                             </div>
                             <div class="row-3col-3">    
-                                <label for="last" class="form-label pt-1">Short summary</label>
+                                <label for="title" class="form-label pt-1">Short summary</label>
                                 <input name="recipeTitle" required type="text" class="form-control" id="title">
                                 <br>
                             </div>
                             <div class="row-3col-3">
-                                <label for="last" class="form-label">Recipe method</label>
-                                <textarea class="form-control" name="recipeMethod" cols="40" rows="5"></textarea>
+                                <label for="recipeMethod" class="form-label">Recipe method</label>
+                                <textarea class="form-control" name="recipeMethod" id="recipeMethod" cols="40" rows="5"></textarea>
                                 <br>
                             </div>
                             <div class='row-3col-3'>
-                                <label for='last' class='form-label'>Ingredient</label>
-                                <input required type='tel' name='items[]' value='' class='form-control'>
+                                <label for='ingredient' class='form-label'>Ingredient</label>
+                                <input required type='tel' name='items[]' value='' class='form-control' id="ingredient">
                             </div>
                             <div id="tbody0"></div>
                             <div id="tbody1"></div>
