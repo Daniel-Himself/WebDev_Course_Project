@@ -135,11 +135,11 @@ if(isset($_COOKIE['user_email']) || isset($_SESSION['User']))
             <?php } ?>
         </div>
         <script>
-            var items = 0;
+            let items = 0;
 
             function addItem() {
                 items++;
-                var html = "<div class='row-3col-3'>";
+                let html = "<div class='row-3col-3'>";
                 html += " <label for='last' class='form-label'>ingredient</label>";
                 html += "<input required type='tel' name='items[]' value='' class='form-control'>";
                 html += "</div>";
