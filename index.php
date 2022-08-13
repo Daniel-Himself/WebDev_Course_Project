@@ -8,11 +8,11 @@
     header("location: ./recipes_page.php");
 }
 if(!isset($_SESSION['user_email'])){
-    header('Location: login_page.php');
+    header('Location: ./login_page.php');
     exit;
 }
 else{
-    header('Location: recipes_page.php');
+    header('Location: ./recipes_page.php');
 }
 ?>
 
